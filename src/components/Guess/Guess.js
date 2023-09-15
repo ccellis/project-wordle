@@ -1,13 +1,24 @@
-import React from 'react';
+import React from "react";
+import { range } from "../../utils";
 
-function Guess({value}) {
+function Guess({ value }) {
+  if (!value) {
+    return (
+      <p className="guess">
+        {range(5).map((num) => (
+          <span className="cell" key={num}></span>
+        ))}
+      </p>
+    );
+  }
+
   return (
     <p className="guess">
-      <span className="cell">{value ? value[0] : undefined}</span>
-      <span className="cell">{value ? value[1] : undefined}</span>
-      <span className="cell">{value ? value[2] : undefined}</span>
-      <span className="cell">{value ? value[3] : undefined}</span>
-      <span className="cell">{value ? value[4] : undefined}</span>
+      {value.map(({ letter, status }, index) => (
+        <span className={`cell ${status}`} key={index}>
+          {letter}
+        </span>
+      ))}
     </p>
   );
 }
