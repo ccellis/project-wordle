@@ -1,7 +1,6 @@
 import React from "react";
 
 function Banner({ gameStatus, guessList, answer }) {
-  console.log(gameStatus);
   if (gameStatus === "playing") {
     return <></>;
   }
@@ -21,7 +20,11 @@ function Banner({ gameStatus, guessList, answer }) {
       <div className="happy banner">
         <p>
           <strong>Congratulations!</strong> Got it in
-          <strong> {guessList.length} guesses</strong>.
+          <strong>
+            {" "}
+            {guessList.length === 1 ? "1 guess" : `${guessList.length} guesses`}
+          </strong>
+          .
         </p>
       </div>
     );
